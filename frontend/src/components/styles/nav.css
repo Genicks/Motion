@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: rgb(236, 91, 37);
+  background-color: transparent;
 }
 
 .Nav a {
@@ -18,12 +18,30 @@
   height: 3rem;
 }
 
-#Today {
-  background-color: rgb(185, 71, 29);
-}
-
-#Normal, #Today {
+.Normal, .Current {
   width: 100%;
   border: none;
   border-right: 1px solid rgb(31, 31, 31);
+  background-color: rgb(236, 91, 37);
+}
+
+#Today {
+  border-bottom: 7px solid teal;
+  border-radius: 0 0 5px 5px;
+}
+
+.Current {
+  background-color: rgba(236, 90, 37, 0.502);
+}
+
+.Normal:hover, .Current:hover {
+  animation: shiftAndMoveAnimation 0.7s ease-in-out forwards;
+}
+
+@keyframes shiftAndMoveAnimation {
+  to {
+    background-color: teal;
+    transform: translateY(7px); 
+    border-radius: 0 0 20% 20%;
+  }
 }

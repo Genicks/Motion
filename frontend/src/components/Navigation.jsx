@@ -2,16 +2,40 @@ import React from "react";
 import "./styles/nav.css";
 
 function Nav(props) {
-const { day } = props
+  const { day } = props;
+
+  const currentRoute = (dayPath) => {
+    const currentPath = window.location.pathname;
+    if (currentPath === dayPath) {
+      return "Current";
+    } else {
+      return "Normal";
+    }
+  };
+
   return (
     <div className="Nav">
-      <a id={0 === day ? "Today" : 'Normal'} href='/SUN'>SUN</a>
-      <a id={1 === day ? "Today" : 'Normal'} href='/MON'>MON</a>
-      <a id={2 === day ? "Today" : 'Normal'} href='/TUE'>TUE</a>
-      <a id={3 === day ? "Today" : 'Normal'} href='/WED'>WED</a>
-      <a id={4 === day ? "Today" : 'Normal'} href='/THU'>THU</a>
-      <a id={5 === day ? "Today" : 'Normal'} href='/FRI'>FRI</a>
-      <a id={6 === day ? "Today" : 'Normal'} href='/SAT'>SAT</a>
+      <a className={currentRoute("/SUN")} id={(day === 0? "Today": null)} href="/SUN">
+        SUN
+      </a>
+      <a className={currentRoute("/MON")} href="/MON">
+        MON
+      </a>
+      <a className={currentRoute("/TUE")} href="/TUE">
+        TUE
+      </a>
+      <a className={currentRoute("/WED")} href="/WED">
+        WED
+      </a>
+      <a className={currentRoute("/THU")} href="/THU">
+        THU
+      </a>
+      <a className={currentRoute("/FRI")} href="/FRI">
+        FRI
+      </a>
+      <a className={currentRoute("/SAT")} href="/SAT">
+        SAT
+      </a>
     </div>
   );
 }
