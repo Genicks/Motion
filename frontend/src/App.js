@@ -40,7 +40,7 @@ function App() {
       <div className="UI">
         <Nav day={day} />
         <Router>
-          <Routes>
+          <Routes basename="/frontend">
             <Route path="/" element={days[day]} />
             <Route path="/SUN" element={days[0]} />
             <Route path="/MON" element={days[1]} />
