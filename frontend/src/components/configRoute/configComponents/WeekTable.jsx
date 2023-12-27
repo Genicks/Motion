@@ -3,14 +3,14 @@ import "./styles/WeekTable.css";
 import React, { useEffect, useState } from "react";
 
 const WeekTable = (props) => {
-  const { fetchedData } = props;
+  const { fetchedData, setButtonDisabled, setUpdate } = props;
   const [data, setData] = useState([]);
   const [day, setDay] = useState([{}, {}, {}, {}, {}, {}, {}]);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    setScreenWidth(window.innerWidth)
-  },[])
+    setScreenWidth(window.innerWidth);
+  }, []);
 
   const toObject = async () => {
     setData(JSON.parse(fetchedData));
@@ -28,6 +28,15 @@ const WeekTable = (props) => {
     }
   }, [data]);
 
+  const handleInput = (event, index) => {
+    day[index].activity = event.target.value;
+    setDay([...day]);
+    data[0].schedule.days = day;
+    setData([...data]);
+    setUpdate(JSON.stringify(data, null, 3));
+    // console.log(data)
+    setButtonDisabled(false);
+  };
   const week = () => {
     if (screenWidth < 600) {
       return (
@@ -64,12 +73,13 @@ const WeekTable = (props) => {
         </thead>
         <tbody>
           <tr>
-            {day.map((activity, index) => (
+            {day.map((day, index) => (
               <td key={index}>
                 <input
+                  id={`textInput${index}`}
                   className="textInput"
-                  value={activity.activity || "REST"}
-                  // onChange={ }
+                  value={day.activity}
+                  onChange={(e) => handleInput(e, index)}
                 ></input>
               </td>
             ))}

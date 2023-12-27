@@ -32,7 +32,7 @@ const Config = (props) => {
   return (
     <div>
       <Edit isButtonDisabled={isButtonDisabled} handleButtonClick={handleButtonClick}/>
-      <WeekTable fetchedData={fetchedData} setButtonDisabled={setButtonDisabled}/>
+      <WeekTable fetchedData={fetchedData} setButtonDisabled={setButtonDisabled} setUpdate={setUpdate}/>
       <Editor setButtonDisabled={setButtonDisabled} setUpdate={setUpdate} Update={Update}/>
     </div>
   );
