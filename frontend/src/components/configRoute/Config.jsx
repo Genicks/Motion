@@ -1,6 +1,7 @@
 import Editor from "./configComponents/Editor";
 import "../styles/main.css"
 import WeekTable from "./configComponents/WeekTable";
+import CategoryTable from "./configComponents/CategoryTable";
 import { useState, useEffect } from "react";
 import Edit from "./configComponents/Edit";
 import axios from "axios";
@@ -33,6 +34,7 @@ const Config = (props) => {
     <div>
       <Edit isButtonDisabled={isButtonDisabled} handleButtonClick={handleButtonClick}/>
       <WeekTable fetchedData={fetchedData} setButtonDisabled={setButtonDisabled} setUpdate={setUpdate}/>
+      <CategoryTable data={data} Update={Update}  setButtonDisabled={setButtonDisabled} setUpdate={setUpdate}/>
       <Editor setButtonDisabled={setButtonDisabled} setUpdate={setUpdate} Update={Update}/>
     </div>
   );
