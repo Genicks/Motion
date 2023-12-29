@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const CategoryTable = (props) => {
   // eslint-disable-next-line no-unused-vars
-  const { data, setUpdate } = props;
+  const { data, setButtonDisabled, setUpdate} = props;
   const [catName, setCatName] = useState(["Loading..."]);
   const [exercise, setExercise] = useState([]);
 
@@ -14,6 +14,11 @@ const CategoryTable = (props) => {
     }
   }, [data, setCatName]);
 
+  const handleInput = (event, index, catName, Exercise) => {
+
+  };
+
+
   const exerciseDetails = (catName) => {
     const row = () => {
       if (exercise.length !== 0) {
@@ -22,9 +27,30 @@ const CategoryTable = (props) => {
         return array.map((details, index) => {
           return (
             <tr key={index}>
-              <td>{details.Exercise}</td>
-              <td>{details.Set}</td>
-              <td>{details.Rep}</td>
+              <td>
+                <input
+                  id={`textInput${index}`}
+                  className="textInput"
+                  value={details.Exercise}
+                  onChange={(e) => handleInput(e, index, catName, "Exercise")}
+                ></input>
+              </td>
+              <td>
+                <input
+                  id={`textInput${index}`}
+                  className="textInput"
+                  value={details.Set}
+                  onChange={(e) => handleInput(e, index, catName, "Set")}
+                ></input>
+              </td>
+              <td>
+                <input
+                  id={`textInput${index}`}
+                  className="textInput"
+                  value={details.Rep}
+                  onChange={(e) => handleInput(e, index, catName, "Rep")}
+                ></input>
+              </td>
             </tr>
           );
         });
