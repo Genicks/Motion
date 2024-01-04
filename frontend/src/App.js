@@ -13,6 +13,7 @@ function App() {
       try {
         const req = await fetch("https://exercise-data.onrender.com/");
         // const req = await fetch("http://192.168.18.40:4000/");
+        // const req = await fetch("http://localhost:4000/");
         const data = await req.json();
         setData(data);
       } catch (err) {
@@ -49,7 +50,7 @@ function App() {
             <Route path="/THU" element={days[4]} />
             <Route path="/FRI" element={days[5]} />
             <Route path="/SAT" element={days[6]} />
-            <Route path="/config" element={<Config data={data} />} />
+            <Route path="/config" element={<Config data={data} setData={setData}/>} />
           </Routes>
         </Router>
         <div className="ConfigBtnCon">
